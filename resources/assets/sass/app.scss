@@ -1,7 +1,14 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-$color: red;
+@import 'mixins/mixins';
 
 body {
-  background-color: $color;
+  margin: 0;
+  padding: 0;
+  //@include prefix(background, linear-gradient(#E6F9FF, #FFF), moz webkit o ms);
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
+
+@import 'animations/welcome_animation';
+@import 'blades/welcome_page';
+@import 'navbar';

@@ -45,7 +45,7 @@ gulp.task('compress', ['jshint'], function() {
 });
 
 gulp.task('styles', function () {
-    return gulp.src('resources/assets/sass/*.scss')
+    return gulp.src('resources/assets/sass/app.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(gulp.dest('public/src/css'))
         .pipe(cleanCss())
@@ -79,8 +79,8 @@ var globs = [
 // });
 
 gulp.task('watch', function() {
-    gulp.watch('resources/assets/js/*.js', ['compress']);
-    gulp.watch('resources/assets/sass/*.scss', ['styles']);
+    gulp.watch('resources/assets/js/**/*.js', ['compress']);
+    gulp.watch('resources/assets/sass/**/*.scss', ['styles']);
 });
 
 gulp.task('default', ['watch']);

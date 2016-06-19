@@ -11,10 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('welcome');
 
-Route::auth();
+Route::get('/', [
+   'uses' => 'UserController@welcomeRoute',
+    'as' => 'welcome'
+]);
 
-Route::get('/home', 'HomeController@index');
+Route::post('/register', [
+    'uses' => 'UserController@registerUser',
+    'as' => 'register.user'
+]);
+
+Route::get('/home', [
+    'uses' => 'UserController@homeRoute',
+    'as' => 'home',
+    'middleware' => 'auth'
+]);
+
+Route::get('/logout', [
+    'uses' => 'UserController@logOut',
+    'as' => 'logout'
+]);
+
+Route::post('/userlogin', [
+    'uses' => 'UserController@logIn',
+    'as' => 'login.user'
+]);
+
+Route::get('/login', function(){
+    return view('authentication.login');
+})->name('login');

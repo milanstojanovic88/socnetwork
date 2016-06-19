@@ -1,0 +1,41 @@
+// navbar
+
+$navbar-background: #404040;
+$color-link: #f2f2f2;
+$color-hover: #c4c4c4;
+
+.navbar-black {
+  background-color: $navbar-background;
+  border-radius: 0;
+}
+.navbar-default .navbar-brand {
+  color: $color-link;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &:active {
+    color: $color-link;
+  }
+
+  &:visited {
+    color: $color-link;
+  }
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: $color-link;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &:active {
+    color: $color-link;
+  }
+
+  &:visited {
+    color: $color-link;
+  }
+}
