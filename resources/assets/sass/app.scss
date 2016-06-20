@@ -1,6 +1,11 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import 'mixins/mixins';
 
+* {
+  @include prefix(box-sizing, border-box, moz webkit o ms);
+  @include prefix(transition,height 0.4s cubic-bezier(.24,.06,.22,.99), webkit moz ms o);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -12,3 +17,4 @@ body {
 @import 'animations/welcome_animation';
 @import 'blades/welcome_page';
 @import 'navbar';
+@import 'chat';

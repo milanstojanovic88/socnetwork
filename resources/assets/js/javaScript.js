@@ -1,13 +1,28 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    // var animationElements = $('.animation-container').children('span');
-    //
-    // for(var i = 0; i < animationElements.length; i++){
-    //
-    //     animationElements
-    //
-    // }
-    //
-    // console.log(animationElements);
+    $('.chat-button.chat-expand').on('click',function () {
+
+        var button = document.getElementsByClassName('chat-expand')[0],
+            chatWindow = button.parentNode.parentNode,
+            dataExpand = button.dataset.expand;
+
+        if(dataExpand == 'expanded') {
+          
+            button.dataset.expand = '';
+            $(chatWindow).removeClass('chat-window-expanded').addClass('chat-window-retracted');
+            button.innerHTML = "Show";
+            
+        } else {
+
+            button.dataset.expand = 'expanded';
+            $(chatWindow).removeClass('chat-window-retracted').addClass('chat-window-expanded');
+            button.innerHTML = "Hide";
+        }
+
+        console.log(chatWindow);
+        console.log(dataExpand);
+
+
+    });
 
 });

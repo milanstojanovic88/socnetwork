@@ -20,7 +20,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Sign up <span class="glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-primary" type="submit">Sign in <span class="glyphicon glyphicon-ok"></span></button>
                     <button class="btn btn-default" type="reset">Reset <span class="glyphicon glyphicon-remove"></span></button>
                 </div>
 

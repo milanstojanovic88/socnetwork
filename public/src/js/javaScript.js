@@ -1,1 +1,1 @@
-$(document).ready(function(){});
+$(document).ready(function(){$(".chat-button.chat-expand").on("click",function(){var e=document.getElementsByClassName("chat-expand")[0],a=e.parentNode.parentNode,d=e.dataset.expand;"expanded"==d?(e.dataset.expand="",$(a).removeClass("chat-window-expanded").addClass("chat-window-retracted"),e.innerHTML="Show"):(e.dataset.expand="expanded",$(a).removeClass("chat-window-retracted").addClass("chat-window-expanded"),e.innerHTML="Hide"),console.log(a),console.log(d)})});
