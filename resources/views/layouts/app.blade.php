@@ -17,6 +17,7 @@
         {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>--}}
         <script src="{{ URL::to('/src/jquery/jquery.min.js') }}"></script>
         <script src="{{ URL::to('/src/bootstrap/bootstrap.min.js') }}"></script>
+        <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
 
         <script src="{{ URL::to('/src/js/javaScript.js') }}"></script>
 
@@ -96,6 +97,60 @@
                     <button class="btn btn-success chat-button chat-connect">Connect</button>
                 </div>
             </div>
+            <div class="chat-panels-container">
+
+                <div class="chat-messages-window" id="chatDisplay"></div>
+                <form action="" method="POST">
+                    <textarea name="chat-message" id="chatMessageBox" placeholder="Type your message:"></textarea>
+                    <input type="hidden" name="user" value="{{ Auth::user()->user_id }}">
+                </form>
+            </div>
+            <script>
+                var chat = document.getElementById('chatDisplay'),
+                    msg = document.getElementById('chatMessageBox'),
+                    socket = new WebSocket('ws://127.0.0.1:2000'),
+                    open = false;
+
+                    function addMessage(msg) {
+                        chat.innerHTML += "<p>" + msg + "</p>";
+                    }
+
+                msg.addEventListener('keypress', function(event){
+                    if(event.charCode != 13) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    if(msg.value == "" || !open) {
+                        return;
+                    }
+
+                    socket.send(JSON.stringify({
+                        msg: msg.value
+                    }));
+
+                    addMessage(msg.value);
+
+                    msg.value = "";
+                });
+
+                socket.onopen = function (){
+                    open = true;
+                    addMessage("<i>Connected.</i>");
+                };
+
+                socket.onmessage = function (event){
+                    var data = JSON.parse(event.data);
+
+                    addMessage(data.msg);
+                };
+
+                socket.onclose = function (){
+                    open = false;
+                    addMessage("Disconnected.");
+                };
+            </script>
          @endif
     </body>
 </html>

@@ -15,15 +15,15 @@ $color-hover: #c4c4c4;
 .navbar-default .navbar-brand {
   color: $color-link;
 
+  &:link {
+    color: $color-link;
+  }
+
   &:hover {
     color: $color-hover;
   }
 
   &:active {
-    color: $color-link;
-  }
-
-  &:visited {
     color: $color-link;
   }
 }
@@ -31,15 +31,15 @@ $color-hover: #c4c4c4;
 .navbar-default .navbar-nav>li>a {
   color: $color-link;
 
+  &:link {
+    color: $color-link;
+  }
+
   &:hover {
     color: $color-hover;
   }
 
   &:active {
-    color: $color-link;
-  }
-
-  &:visited {
     color: $color-link;
   }
 }

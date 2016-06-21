@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.chat-button.chat-expand').on('click',function () {
 
         var button = document.getElementsByClassName('chat-expand')[0],
-            chatWindow = button.parentNode.parentNode,
+            chatWindow = button.parentNode.previousElementSibling,
             dataExpand = button.dataset.expand;
 
         if(dataExpand == 'expanded') {
@@ -18,11 +18,6 @@ $(document).ready(function () {
             $(chatWindow).removeClass('chat-window-retracted').addClass('chat-window-expanded');
             button.innerHTML = "Hide";
         }
-
-        console.log(chatWindow);
-        console.log(dataExpand);
-
-
     });
 
 });
