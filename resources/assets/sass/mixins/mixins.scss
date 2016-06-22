@@ -13,3 +13,16 @@
   // Output standard non-prefixed declaration
   #{$property}: $value;
 }
+
+@mixin animateElements($number-of-elements, $animation-duration, $delay-increment){
+  $delay: 0;
+  @for $i from 1 through $number-of-elements {
+    .animation-container span:nth-of-type(#{$i}) {
+      opacity: 0;
+      -webkit-animation: welcomeAnimation $animation-duration linear $delay+s infinite;
+      -o-animation: welcomeAnimation $animation-duration linear $delay+s infinite;
+      animation: welcomeAnimation $animation-duration linear $delay+s infinite;
+    }
+    $delay: $delay + $delay-increment;
+  }
+}

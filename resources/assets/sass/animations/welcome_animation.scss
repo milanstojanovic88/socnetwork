@@ -1,52 +1,53 @@
-//// welcome_animation
-//
-//@keyframes welcomeAnimation {
-//  0% {
-//    opacity: 0;
-//  }
-//
-//  25% {
-//    opacity: 0.5;
-//  }
-//
-//  50% {
-//    opacity: 1;
-//  }
-//
-//  75% {
-//    opacity: 0.5;
-//  }
-//
-//  100% {
-//    opacity: 0;
-//  }
-//}
-//
-//@-webkit-keyframes welcomeAnimation {
-//  0% {
-//    opacity: 0;
-//  }
-//
-//  25% {
-//    opacity: 0.5;
-//  }
-//
-//  50% {
-//    opacity: 1;
-//  }
-//
-//  75% {
-//    opacity: 0.5;
-//  }
-//
-//  100% {
-//    opacity: 0;
-//  }
-//}
-//
-//$animation-duration: 2s;
-//$animation-delay: $animation-duration + 2;
-//
+// welcome_animation
+
+@keyframes welcomeAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.5;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  45% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes welcomeAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.5;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  45% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+$animation-duration: 10s;
+
+@include animateElements(13, $animation-duration, 0.2);
+
 //.animation-container span:nth-of-type(1) {
 //  -webkit-animation: welcomeAnimation $animation-duration linear 0s infinite;
 //  -o-animation:welcomeAnimation $animation-duration linear 0s infinite;
@@ -54,72 +55,72 @@
 //}
 //
 //.animation-container span:nth-of-type(2) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -2s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -2s infinite;
-//  animation:welcomeAnimation $animation-duration linear -2s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 2s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 2s infinite;
+//  animation:welcomeAnimation $animation-duration linear 2s infinite;
 //}
 //
 //.animation-container span:nth-of-type(3) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -4s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -4s infinite;
-//  animation:welcomeAnimation $animation-duration linear -4s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 4s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 4s infinite;
+//  animation:welcomeAnimation $animation-duration linear 4s infinite;
 //}
 //
 //.animation-container span:nth-of-type(4) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -6s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -6s infinite;
-//  animation:welcomeAnimation $animation-duration linear -6s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 6s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 6s infinite;
+//  animation:welcomeAnimation $animation-duration linear 6s infinite;
 //}
 //
 //.animation-container span:nth-of-type(5) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -8s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -8s infinite;
-//  animation:welcomeAnimation $animation-duration linear -8s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 8s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 8s infinite;
+//  animation:welcomeAnimation $animation-duration linear 8s infinite;
 //}
 //
 //.animation-container span:nth-of-type(6) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -10s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -10s infinite;
-//  animation:welcomeAnimation $animation-duration linear -10s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 10s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 10s infinite;
+//  animation:welcomeAnimation $animation-duration linear 10s infinite;
 //}
 //
 //.animation-container span:nth-of-type(7) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -12s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -12s infinite;
-//  animation:welcomeAnimation $animation-duration linear -12s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 12s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 12s infinite;
+//  animation:welcomeAnimation $animation-duration linear 12s infinite;
 //}
 //
 //.animation-container span:nth-of-type(8) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -14s infinite;
-//  -o-animation: welcomeAnimation $animation-duration linear -14s infinite;
-//  animation: welcomeAnimation $animation-duration linear -14s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 14s infinite;
+//  -o-animation: welcomeAnimation $animation-duration linear 14s infinite;
+//  animation: welcomeAnimation $animation-duration linear 14s infinite;
 //}
 //.animation-container span:nth-of-type(9) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -16s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -16s infinite;
-//  animation:welcomeAnimation $animation-duration linear -16s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 16s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 16s infinite;
+//  animation:welcomeAnimation $animation-duration linear 16s infinite;
 //}
 //
 //.animation-container span:nth-of-type(10) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -18s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -18s infinite;
-//  animation:welcomeAnimation $animation-duration linear -18s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 18s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 18s infinite;
+//  animation:welcomeAnimation $animation-duration linear 18s infinite;
 //}
 //
 //.animation-container span:nth-of-type(11) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -20s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -20s infinite;
-//  animation:welcomeAnimation $animation-duration linear -20s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 20s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 20s infinite;
+//  animation:welcomeAnimation $animation-duration linear 20s infinite;
 //}
 //
 //.animation-container span:nth-of-type(12) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -22s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -22s infinite;
-//  animation:welcomeAnimation $animation-duration linear -22s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 22s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 22s infinite;
+//  animation:welcomeAnimation $animation-duration linear 22s infinite;
 //}
 //
 //.animation-container span:nth-of-type(13) {
-//  -webkit-animation: welcomeAnimation $animation-duration linear -24s infinite;
-//  -o-animation:welcomeAnimation $animation-duration linear -24s infinite;
-//  animation:welcomeAnimation $animation-duration linear -24s infinite;
+//  -webkit-animation: welcomeAnimation $animation-duration linear 24s infinite;
+//  -o-animation:welcomeAnimation $animation-duration linear 24s infinite;
+//  animation:welcomeAnimation $animation-duration linear 24s infinite;
 //}
