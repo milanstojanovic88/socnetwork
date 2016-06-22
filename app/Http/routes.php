@@ -44,3 +44,8 @@ Route::post('/userlogin', [
 Route::get('/login', function(){
     return view('authentication.login');
 })->name('login');
+
+Route::post('/isloggedin', [
+    'uses' => 'UserController@isLoggedIn',
+    'as' => 'isloggedin'
+]);

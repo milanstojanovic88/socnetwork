@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Social Network</title>
 
         {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--}}
@@ -76,20 +78,15 @@
             <div class="chat-container">
                 <div class="users-list-container">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="#">
-                                Connected
-                                <img src="{{ URL::to('images/dummy-image.jpg') }}" alt="" class="user-chat-image img-responsive">
-                                <span class="con-status connected glyphicon glyphicon-globe"></span>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                Disconnected
-                                <img src="{{ URL::to('images/dummy-image.jpg') }}" alt="" class="user-chat-image img-responsive">
-                                <span class="con-status disconnected glyphicon glyphicon-globe"></span>
-                            </a>
-                        </li>
+                        @foreach(DB::table('users')->get() as $user)
+                            <li class="list-group-item">
+                                <a href="#">
+                                    {{ $user->username }}
+                                    <img src="{{ URL::to('images/dummy-image.jpg') }}" alt="" class="user-chat-image img-responsive">
+                                    <span class="con-status glyphicon glyphicon-globe {{ $user->logged_in ? 'connected' : 'disconnected' }}" data-userid="{{ $user->id }}"></span>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="chat-controls-container">
@@ -102,21 +99,23 @@
                 <div class="chat-messages-window" id="chatDisplay"></div>
                 <form action="" method="POST">
                     <textarea name="chat-message" id="chatMessageBox" placeholder="Type your message:"></textarea>
-                    <input type="hidden" name="user" value="{{ Auth::user()->user_id }}">
                 </form>
             </div>
             <script>
                 var chat = document.getElementById('chatDisplay'),
                     msg = document.getElementById('chatMessageBox'),
+                    user = '{{ Auth::user()->username }}',
                     socket = new WebSocket('ws://127.0.0.1:2000'),
-                    open = false;
+                    open = false,
+                    checkIfLoggedURL = '{{ route('isloggedin') }}';
 
-                    function addMessage(msg) {
-                        chat.innerHTML += "<p>" + msg + "</p>";
+                    function addMessage(msg, user) {
+                        chat.innerHTML += "<p><span>" + user + "</span>: " + msg + "</p>";
+//                        $(chat).scrollTop($(this).children().height());
                     }
 
                 msg.addEventListener('keypress', function(event){
-                    if(event.charCode != 13) {
+                    if(event.keyCode != 13) {
                         return;
                     }
 
@@ -127,29 +126,31 @@
                     }
 
                     socket.send(JSON.stringify({
-                        msg: msg.value
+                        msg: msg.value,
+                        user: user
                     }));
 
-                    addMessage(msg.value);
+                    addMessage(msg.value, user);
 
                     msg.value = "";
                 });
 
                 socket.onopen = function (){
                     open = true;
-                    addMessage("<i>Connected.</i>");
                 };
 
                 socket.onmessage = function (event){
                     var data = JSON.parse(event.data);
 
-                    addMessage(data.msg);
+                    addMessage(data.msg, data.user);
+//                    $(chat).scrollTop($(this).children().height());
                 };
 
                 socket.onclose = function (){
                     open = false;
-                    addMessage("Disconnected.");
                 };
+
+
             </script>
          @endif
     </body>

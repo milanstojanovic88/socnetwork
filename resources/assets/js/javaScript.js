@@ -20,4 +20,39 @@ $(document).ready(function () {
         }
     });
 
+    updateUserStatus();
+
 });
+
+function updateUserStatus() {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        url: checkIfLoggedURL,
+        type: 'POST'
+    })
+        .done(function(msg){
+            for(var i = 0; i < msg.length; i++) {
+
+                var user_id = msg[i].user_id;
+
+                if(msg[i].logged_in) {
+                    $('.users-list-container ul li a span[data-userid="' + user_id + '"]')
+                        .removeClass('disconnected')
+                        .addClass('connected');
+                } else {
+                    $('.users-list-container ul li a span[data-userid="' + user_id + '"]')
+                        .removeClass('connected')
+                        .addClass('disconnected');
+                }
+            }
+    });
+
+    setTimeout(updateUserStatus, 30000);
+}
+

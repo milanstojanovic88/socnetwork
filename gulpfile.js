@@ -36,7 +36,9 @@ gulp.task('jshint', function() {
 
 gulp.task('compress', ['jshint'], function() {
     gulp.src('resources/assets/js/*.js')
-        .pipe(uglyfly())
+        .pipe(uglyfly({
+            mangle: false
+        }))
         // .pipe(rename({
         //     suffix: '.min',
         //     extname: '.js'

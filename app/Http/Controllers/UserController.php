@@ -29,6 +29,9 @@ class UserController extends Controller
 
         Auth::login($user);
 
+        Auth::user()->logged_in = true;
+        Auth::user()->update();
+
         return redirect()->route('home');
 
     }
@@ -46,6 +49,8 @@ class UserController extends Controller
                 'password' => $request['password']
             ], $request['remember_me']
         )){
+            Auth::user()->logged_in = true;
+            Auth::user()->update();
             return redirect()->route('home');
         } else {
             return redirect()->back();
@@ -54,9 +59,27 @@ class UserController extends Controller
 
     public function logOut(Request $request)
     {
+        Auth::user()->logged_in = false;
+        Auth::user()->update();
         Auth::logout();
 
         return redirect()->route('welcome');
+    }
+
+    public function isLoggedIn(Request $request)
+    {
+        $users = User::all();
+
+        $responseData = [];
+
+        foreach($users as $user) {
+
+            array_push($responseData, ['user_id' => $user->id, 'logged_in' => $user->logged_in]);
+
+        }
+
+        return response()->json($responseData, 200);
+
     }
 
     public function homeRoute()
